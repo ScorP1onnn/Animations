@@ -1,11 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from lmfit import Model
 from matplotlib.widgets import Slider
 
 fig = plt.figure()
 fig.set_size_inches(8, 8)
-plt.subplots_adjust(bottom=0.4)
+plt.subplots_adjust(bottom=0.25)
 
 
 x = np.linspace(-100,100,1000)
@@ -29,13 +28,7 @@ y = (m / n)
 
 y_fft = np.fft.fftshift(np.abs(np.fft.fft(y))/np.sqrt(len(y)))
 
-gm = Model(guass)
 
-params=gm.make_params(x_0=0,s=0.02)
-
-out = gm.fit(y_fft,params,x=x)
-
-print(out.fit_report())
 
 #plt.plot(x,y)
 #plt.plot(x,y_fft)
